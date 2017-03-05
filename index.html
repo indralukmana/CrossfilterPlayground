@@ -130,6 +130,22 @@
 
         // sum of quantity atribut from facts
         console.log("Sum of quantity :" + payments.groupAll().reduceSum(function (d) { return d.quantity }).value());
+
+        // type dimension
+        var typeDimension = payments.dimension(function(d) {
+            console.log(d.type);
+            return d.type;
+        });
+
+        // tipDimension
+        var tipDimension = payments.dimension(function (d) {
+            console.log(d.tip);
+            return d.tip;
+        });
+
+        // Dimension total
+        console.log(tipDimension.top(3));
+
     </script>
 
 </body>
