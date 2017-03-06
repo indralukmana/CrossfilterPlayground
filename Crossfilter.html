@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Crossfilter Playground</title>
+</head>
+
+<body>
+
+    <!-- Crossfilter javascript library -->
+    <script type="text/javascript" src="js/crossfilter.js"></script>
+    <!-- JS library for printing the data in crossfilter -->
+    <script type="text/javascript" src="js/print_filter.js"></script>
+
+    <!-- Crossfilter usage JS -->
+    <script type="text/javascript">
+        var payments = crossfilter([{
+                date: "2011-11-14T16:17:54Z",
+                quantity: 2,
+                total: 190,
+                tip: 100,
+                type: "tab",
+                productIDs: ["001"]
+            },
+            {
+                date: "2011-11-14T16:20:19Z",
+                quantity: 2,
+                total: 190,
+                tip: 100,
+                type: "tab",
+                productIDs: ["001", "005"]
+            },
+            {
+                date: "2011-11-14T16:28:54Z",
+                quantity: 1,
+                total: 300,
+                tip: 200,
+                type: "visa",
+                productIDs: ["004", "005"]
+            },
+            {
+                date: "2011-11-14T16:30:43Z",
+                quantity: 2,
+                total: 90,
+                tip: 0,
+                type: "tab",
+                productIDs: ["001", "002"]
+            },
+            {
+                date: "2011-11-14T16:48:46Z",
+                quantity: 2,
+                total: 90,
+                tip: 0,
+                type: "tab",
+                productIDs: ["005"]
+            },
+            {
+                date: "2011-11-14T16:53:41Z",
+                quantity: 2,
+                total: 90,
+                tip: 0,
+                type: "tab",
+                productIDs: ["001", "004", "005"]
+            },
+            {
+                date: "2011-11-14T16:54:06Z",
+                quantity: 1,
+                total: 100,
+                tip: 0,
+                type: "cash",
+                productIDs: ["001", "002", "003", "004", "005"]
+            },
+            {
+                date: "2011-11-14T16:58:03Z",
+                quantity: 2,
+                total: 90,
+                tip: 0,
+                type: "tab",
+                productIDs: ["001"]
+            },
+            {
+                date: "2011-11-14T17:07:21Z",
+                quantity: 2,
+                total: 90,
+                tip: 0,
+                type: "tab",
+                productIDs: ["004", "005"]
+            },
+            {
+                date: "2011-11-14T17:22:59Z",
+                quantity: 2,
+                total: 90,
+                tip: 0,
+                type: "tab",
+                productIDs: ["001", "002", "004", "005"]
+            },
+            {
+                date: "2011-11-14T17:25:45Z",
+                quantity: 2,
+                total: 200,
+                tip: 0,
+                type: "cash",
+                productIDs: ["002"]
+            },
+            {
+                date: "2011-11-14T17:29:52Z",
+                quantity: 1,
+                total: 200,
+                tip: 100,
+                type: "visa",
+                productIDs: ["004"]
+            }
+        ]);
+
+        // show the crossfilter object
+        print_filter(payments);
+
+        // show the data of payments
+        print_filter("payments");
+
+        //show the size of data
+        console.log("Amount of data :" + payments.size());
+
+        //show the size of data using count
+        console.log("Amount of data (count) :" + payments.groupAll().reduceCount().value());
+
+        //sum of total atribut from facts
+        console.log("Sum of total :" + payments.groupAll().reduceSum(function(d){ return d.total; }).value());
+
+        // sum of quantity atribut from facts
+        console.log("Sum of quantity :" + payments.groupAll().reduceSum(function (d) { return d.quantity }).value());
+
+        // type dimension
+        var typeDimension = payments.dimension(function(d) {
+            console.log(d.type);
+            return d.type;
+        });
+
+        // tipDimension
+        var tipDimension = payments.dimension(function (d) {
+            console.log(d.tip);
+            return d.tip;
+        });
+
+        // Dimension total
+        console.log(tipDimension.top(3));
+
+    </script>
+
+</body>
+
+</html>
