@@ -145,28 +145,6 @@
             }
         ]);
 
-        // show the crossfilter object
-        print_filter(payments);
-
-        // show the data of payments
-        print_filter("payments");
-
-        //show the size of data
-        console.log("Amount of data :" + payments.size());
-
-        //show the size of data using count
-        console.log("Amount of data (count) :" + payments.groupAll().reduceCount().value());
-
-        //sum of total atribut from facts
-        console.log("Sum of total :" + payments.groupAll().reduceSum(function(d) {
-            return d.total;
-        }).value());
-
-        // sum of quantity atribut from facts
-        console.log("Sum of quantity :" + payments.groupAll().reduceSum(function(d) {
-            return d.quantity
-        }).value());
-
         // Type Dimension
         var typeDimension = payments.dimension(function(d) {
             return d.type;
@@ -218,9 +196,7 @@
 
         // Draw the barChart
         dc.renderAll();
-
-        // Dimension total
-        console.log(tipDimension.top(3));
+        
     </script>
 
 </body>
