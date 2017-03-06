@@ -165,6 +165,9 @@
             return d.type;
         });
 
+        // Type group from typeDimension
+        var typeGroup = typeDimension.group();
+
         // tipDimension
         var tipDimension = payments.dimension(function(d) {
             return d.tip;
