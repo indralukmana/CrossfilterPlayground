@@ -1,3 +1,3 @@
 # CrossfilterPlayground
-Trying the crossfilter Javascript Library
+My experiment on using the DC Javascript Library
 
