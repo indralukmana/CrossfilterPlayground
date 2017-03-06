@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <title>Barchart Playground</title>
 
-    <link rel="stylesheet" href="/css/dc.css" type="text/css">
-    <style media="screen">
+    <link rel="stylesheet" href="css/dc.css" type="text/css">
+    <style>
         body,
         html {
             height: 100%;
@@ -25,18 +25,19 @@
 
 <body>
 
-    <div class="chart">
+    <div id="chart">
 
     </div>
 
     <!-- D3 javascript library -->
     <script type="text/javascript" src="js/d3.js"></script>
-    <!-- DC javascript library -->
-    <script type="text/javascript" src="js/dc.js"></script>
     <!-- Crossfilter javascript library -->
     <script type="text/javascript" src="js/crossfilter.js"></script>
     <!-- JS library for printing the data in crossfilter -->
     <script type="text/javascript" src="js/print_filter.js"></script>
+
+    <!-- DC javascript library -->
+    <script type="text/javascript" src="js/dc.js"></script>
 
     <!-- Crossfilter usage JS -->
     <script type="text/javascript">
@@ -172,6 +173,16 @@
         var tipDimension = payments.dimension(function(d) {
             return d.tip;
         });
+
+        // Define the barchart
+        dc.barChart("#chart")
+            .dimension(typeDimension)
+            .group(typeGroup)
+            .x(d3.scale.ordinal().domain(['cash', 'tab', 'visa']))
+            .xUnits(dc.units.ordinal);
+
+        // Draw the barChart
+        dc.renderAll();
 
         // Dimension total
         console.log(tipDimension.top(3));
