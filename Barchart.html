@@ -3,11 +3,36 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Crossfilter Playground</title>
+    <title>Barchart Playground</title>
+
+    <link rel="stylesheet" href="/css/dc.css" type="text/css">
+    <style media="screen">
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+    </style>
+
 </head>
 
 <body>
 
+    <div class="chart">
+
+    </div>
+
+    <!-- D3 javascript library -->
+    <script type="text/javascript" src="js/d3.js"></script>
+    <!-- DC javascript library -->
+    <script type="text/javascript" src="js/dc.js"></script>
     <!-- Crossfilter javascript library -->
     <script type="text/javascript" src="js/crossfilter.js"></script>
     <!-- JS library for printing the data in crossfilter -->
@@ -126,26 +151,29 @@
         console.log("Amount of data (count) :" + payments.groupAll().reduceCount().value());
 
         //sum of total atribut from facts
-        console.log("Sum of total :" + payments.groupAll().reduceSum(function(d){ return d.total; }).value());
+        console.log("Sum of total :" + payments.groupAll().reduceSum(function(d) {
+            return d.total;
+        }).value());
 
         // sum of quantity atribut from facts
-        console.log("Sum of quantity :" + payments.groupAll().reduceSum(function (d) { return d.quantity }).value());
+        console.log("Sum of quantity :" + payments.groupAll().reduceSum(function(d) {
+            return d.quantity
+        }).value());
 
-        // type dimension
+        // Type Dimension
         var typeDimension = payments.dimension(function(d) {
             console.log(d.type);
             return d.type;
         });
 
         // tipDimension
-        var tipDimension = payments.dimension(function (d) {
+        var tipDimension = payments.dimension(function(d) {
             console.log(d.tip);
             return d.tip;
         });
 
         // Dimension total
         console.log(tipDimension.top(3));
-
     </script>
 
 </body>
