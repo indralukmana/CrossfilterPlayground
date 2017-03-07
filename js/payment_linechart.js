@@ -16,6 +16,7 @@ var maxDate = dateDimension.top(1)[0].date;
 var lineChart = dc.lineChart("#lineChart")
 .width(1360)
 .height(200)
+.margins({top: 10, bottom: 30, right: 10, left: 70})
 .dimension(dateDimension)
 .group(dateGroup)
 .x(d3.time.scale().domain([minDate,maxDate]))
