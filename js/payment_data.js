@@ -1,4 +1,4 @@
-var payments = crossfilter([{
+var payments_data = [{
         date: "2011-11-14T16:17:54Z",
         quantity: 2,
         total: 190,
@@ -94,4 +94,13 @@ var payments = crossfilter([{
         type: "visa",
         productIDs: ["004"]
     }
-]);
+];
+
+// Convert all date in payment data into 'date'
+payments_data.forEach(function (d) {
+    var convertedDate = new Date(d.date);
+    d.date = convertedDate;
+    console.log(d.date);
+})
+
+var payments = crossfilter(payments_data);
