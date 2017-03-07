@@ -1,3 +1,11 @@
+// Convert all date in payment data into 'date'
+payment.forEach(function (d) {
+    var convertedDate = new Date(d.date);
+    d.date = convertedDate;
+    console.log(d.date);
+});
+
+
 // Type Dimension
 var typeDimension = payments.dimension(function(d) {
     return d.type;
