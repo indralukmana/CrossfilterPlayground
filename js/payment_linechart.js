@@ -7,13 +7,13 @@ var dateDimension = payments.dimension(function(d) {
 var dateGroup = dateDimension.group();
 
 // define the barchart for #totalchart
-var totalChart = dc.barChart("#totalChart")
+var lineChart = dc.lineChart("#lineChart")
 .width(1360)
 .height(200)
-.dimension(totalDimension)
-.group(totalGroup)
+.dimension(dateDimension)
+.group(dateGroup)
 .x(d3.scale.linear().domain([0,400]))
 .xUnits(dc.units.fp.precision(100));
 
-totalChart.yAxis().ticks(5);
-totalChart.xAxis().ticks(4);
+lineChart.yAxis().ticks(5);
+lineChart.xAxis().ticks(4);
