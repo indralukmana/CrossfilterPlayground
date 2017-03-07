@@ -4,7 +4,9 @@ var dateDimension = payments.dimension(function(d) {
 });
 
 // Date group
-var dateGroup = dateDimension.group();
+var dateGroup = dateDimension.group().reduceSum(function(d) {
+    return d.total;
+});
 
 // Minimum and maximum value for dateGroup
 var minDate = dateDimension.bottom(1)[0].date;
