@@ -18,7 +18,7 @@ var minDate = dateDimension.bottom(1)[0].date;
 var maxDate = dateDimension.top(1)[0].date;
 
 // define the barchart for #totalchart
-var lineChart = dc.lineChart("#lineChart")
+var stackedLineChart = dc.lineChart("#lineChart")
 .width(1360)
 .height(200)
 .margins({top: 10, bottom: 30, right: 10, left: 70})
@@ -30,5 +30,5 @@ var lineChart = dc.lineChart("#lineChart")
 .legend(dc.legend().x(1200).y(5).itemHeight(12).gap(5))
 .x(d3.time.scale().domain([minDate,maxDate]))
 
-lineChart.yAxis().ticks(5);
-lineChart.xAxis().ticks(4);
+stackedLineChart.yAxis().ticks(5);
+stackedLineChart.xAxis().ticks(4);
