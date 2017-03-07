@@ -17,7 +17,6 @@ var lineChart = dc.lineChart("#lineChart")
 .dimension(dateDimension)
 .group(dateGroup)
 .x(d3.time.scale().domain([minDate,maxDate]))
-.xUnits(dc.units.fp.precision(100));
 
 lineChart.yAxis().ticks(5);
 lineChart.xAxis().ticks(4);
