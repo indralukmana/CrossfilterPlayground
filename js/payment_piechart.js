@@ -13,4 +13,7 @@ dc.pieChart("#paymentPieChart")
     .width(1365)
     .height(200)
     .dimension(typeDimension)
-    .group(typeGroup);
+    .group(typeGroup)
+    .title(function(d) {
+        return d.key + ': £' + d.value;
+    });
