@@ -17,6 +17,6 @@ dc.pieChart("#paymentDoughnoutChart")
     .title(function(d) {
         return d.key + ': £' + d.value;
     })
-    .label(false)
+    .renderLabel(false)
     .radius(100)
     .innerRadius(80);
