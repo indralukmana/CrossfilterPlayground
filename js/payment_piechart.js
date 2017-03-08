@@ -16,4 +16,7 @@ dc.pieChart("#paymentPieChart")
     .group(typeGroup)
     .title(function(d) {
         return d.key + ': £' + d.value;
+    })
+    .label(function(d) {
+        return d.key + ': ' + Math.round((d.value)/sumTotal*100) + '%';
     });
