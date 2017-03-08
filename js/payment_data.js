@@ -104,3 +104,7 @@ payments_data.forEach(function (d) {
 })
 
 var payments = crossfilter(payments_data);
+var all = payments.groupAll();
+var sumTotal = all.reduceSum(function(d) {
+    return d.total;
+}).value();
