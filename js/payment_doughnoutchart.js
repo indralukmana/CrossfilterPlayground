@@ -20,4 +20,5 @@ dc.pieChart("#paymentDoughnoutChart")
     .renderLabel(false)
     .radius(100)
     .innerRadius(80)
-    .legend(dc.legend().x(1200).y(5).itemHeight(12).gap(5));
+    .legend(dc.legend().x(1200).y(5).itemHeight(12).gap(5))
+    .colors(d3.scale.category10());
