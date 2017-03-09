@@ -1,27 +1,15 @@
-// Date Dimension
-var dateDimension = payments.dimension(function(d) {
-    return d.date;
+// Dimension for scatter plot [Total, Tip]
+var scatterDimension = payments.dimension(function(d) {
+    return [d.total, d.tip];
 });
 
-// Date group
-var dateGroup = dateDimension.group().reduceSum(function(d) {
-    return d.total;
-});
-
-// Minimum and maximum value for dateGroup
-var minDate = dateDimension.bottom(1)[0].date;
-var maxDate = dateDimension.top(1)[0].date;
+// Scatter group
+var scatterGroup = scatterDimension.group();
 
 // define the scatterplot for #paymentScatterPlot
-var lineChart = dc.lineChart("#paymentScatterPlot")
+var scatter = dc.scatterPlot("#paymentScatterPlot")
 .width(1360)
 .height(200)
-.margins({top: 10, bottom: 30, right: 10, left: 70})
-.renderHorizontalGridLines(true)
-.renderArea(true)
-.dimension(dateDimension)
-.group(dateGroup)
-.x(d3.time.scale().domain([minDate,maxDate]))
-
-lineChart.yAxis().ticks(5);
-lineChart.xAxis().ticks(4);
+.dimension(scatterDimension)
+.group(scatterGroup)
+.x(d3.scale.linear().domain([0,300]));
