@@ -37,6 +37,7 @@ var bubblechart = dc.bubbleChart("#paymentBubbleChart")
 .yAxisLabel("Tip Size")
 .r(d3.scale.linear().domain([1,6]))
 .y(d3.scale.linear().domain([0,200]))
-.x(d3.scale.linear().domain([0,300]));
+.x(d3.scale.linear().domain([0,300]))
+.transitionDuration(1500);
 
 bubblechart.yAxis().ticks(5);
