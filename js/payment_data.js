@@ -100,7 +100,6 @@ var payments_data = [{
 payments_data.forEach(function (d) {
     var convertedDate = new Date(d.date);
     d.date = convertedDate;
-    console.log(d.date);
 })
 
 var payments = crossfilter(payments_data);
