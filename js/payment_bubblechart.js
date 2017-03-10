@@ -17,9 +17,10 @@ var bubblechart = dc.bubbleChart("#paymentBubbleChart")
 .renderVerticalGridLines(true)
 .clipPadding(75)
 .colorAccessor(function(d) {
-    return d.value;
+    return d.key[0];
 })
-.colors(d3.scale.category10())
+.colors(colorbrewer.RdYlGn[6])
+.colorDomain([90,300])
 .keyAccessor(function(d) {
   return d.key[0];
 })
