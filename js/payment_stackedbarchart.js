@@ -3,11 +3,6 @@ var typeDimension = payments.dimension(function(d) {
     return d.type;
 });
 
-// Type group with Total from typeDimension
-// var typeGroup = typeDimension.group().reduceSum(function (d) {
-//     return d.total;
-// });
-
 // Type group that return object
 var typeGroup = typeDimension.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
