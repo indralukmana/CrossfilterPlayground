@@ -8,25 +8,15 @@ d3.csv("morley.csv", function(error, experiments) {
 
     var facts = crossfilter(experiments);
 
-    var experimentsDimension = facts.dimension(function(d) {
-        return 'Expt ' + d.Expt;
+    var runDimension = facts.dimension(function(d) {
+      return [d.Expt, d.Run];
     });
 
-    var speedArrayGroup = experimentsDimension.group().reduce(
-        function(i, d) {
-            i.push(d.Speed);
-            return i;
-        },
-        function(i, d) {
-            i.splice(i.indexOf(d.Speed), 1);
-            return i;
-        },
-        function(i, d) {
-            return [];
-        }
-    );
+    var runGroup = runDimension.group().reduceSum(function(d) {
+      return d.Speed;
+    });
 
-    var boxPlot = dc.boxPlot("#morleySeries")
+    var series = dc.seriesChart("#morleySeries")
         .width(1360)
         .height(400)
         .margins({
@@ -35,9 +25,27 @@ d3.csv("morley.csv", function(error, experiments) {
             right: 80,
             left: 60
         })
-        .dimension(experimentsDimension)
-        .group(speedArrayGroup);
+        .chart(function(cht) {
+          return dc.lineChart(cht).renderArea(true).interpolate('basis');
+        })
+        .dimension(runDimension)
+        .group(runGroup)
+        .keyAccessor(function(d) {
+          return d.key[1];
+        })
+        .valueAccessor(function(d) {
+          return d.value;
+        })
+        .seriesAccessor(function(d) {
+          return d.key[0]
+        })
+        .legend(dc.legend().x(100).y(200).itemHeight(13).gap(5).horizontal(2).legendWidth(1360).itemWidth(70))
+        .x(d3.scale.linear().domain([1,20]));
 
+
+
+        // print_filter(runDimension);
+        // print_filter(runGroup);
     // Draw the charts
     dc.renderAll();
 })
