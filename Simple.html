@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>DC Charts Playground</title>
+
+    <link rel="stylesheet" href="css/dc.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .info {
+            background-color: pink;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="paymentChart">
+
+    </div>
+
+    <br>
+
+    <div id="totalChart">
+
+    </div>
+
+    <div id="lineChart">
+
+    </div>
+
+    <div id="stackedLineChart">
+
+    </div>
+
+    <div id="paymentPieChart">
+
+    </div>
+
+    <div id="paymentDoughnoutChart">
+
+    </div>
+
+    <div id="paymentScatterPlot">
+
+    </div>
+
+    <div id="paymentBubbleChart">
+
+    </div>
+
+    <table id="paymentDataTable" class="table table-hover">
+
+    </table>
+
+    <div id="paymentStackedBarchart">
+
+    </div>
+
+    <!-- D3 javascript library -->
+    <script type="text/javascript" src="js/d3.js"></script>
+    <!-- Crossfilter javascript library -->
+    <script type="text/javascript" src="js/crossfilter.js"></script>
+    <!-- JS library for printing the data in crossfilter -->
+    <script type="text/javascript" src="js/print_filter.js"></script>
+
+    <!-- DC javascript library -->
+    <script type="text/javascript" src="js/dc.js"></script>
+
+    <!-- DC javascript library -->
+    <script type="text/javascript" src="js/colorbrewer.js"></script>
+
+
+    <!-- Payments data -->
+    <script src="js/payment_data.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- Payment barchart drawing -->
+    <script src="js/payment_barchart.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- Payment linechart drawing -->
+    <script src="js/payment_linechart.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- Payment stacked linechart drawing -->
+    <script src="js/payment_stackedlinechart.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- Payment piechart drawing -->
+    <script src="js/payment_piechart.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- Payment doughnout drawing -->
+    <script src="js/payment_doughnoutchart.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- Payment scatterplot drawing -->
+    <script src="js/payment_scatterplot.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- Payment bubble chart drawing -->
+    <script src="js/payment_bubblechart.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- Payment table drawing -->
+    <script src="js/payment_datatable.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- Payment stacked barchart drawing -->
+    <script src="js/payment_stackedbarchart.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- DC usage JS -->
+    <script type="text/javascript">
+        // Draw the charts
+        dc.renderAll();
+    </script>
+
+</body>
+
+</html>
