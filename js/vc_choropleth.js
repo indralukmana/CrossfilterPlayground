@@ -1,6 +1,6 @@
-var usChart = dc.geoChoroplethChart("#map");
+var usChart = dc.geoChoroplethChart("#vcChoropleth");
 
-d3.csv("vc.csv", function(error, vcData) {
+d3.csv("vc.csv", function(errorVC, vcData) {
 
 
     // change the data type of Raised from string to number
@@ -19,4 +19,20 @@ d3.csv("vc.csv", function(error, vcData) {
     var stateRaisedSum = states.group().reduceSum(function(d) {
         return d.Raised;
     })
+
+    d3.json("us-states.json", function(errorJson, statesJson) {
+
+        usChart
+            .width(1360)
+            .height(500)
+            .dimension(states)
+            .group(stateRaisedSum)
+            .overlayGeoJson(statesJson.features, "state", function(d) {
+                return d.properties.name;
+            });
+
+        dc.renderAll();
+
+    })
+
 })
